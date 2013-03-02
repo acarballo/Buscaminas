@@ -9,28 +9,30 @@ if($dimension>$dimension_max)
 	$dimension=$dimension_max;
 
 $campominas=array();
-$minas=array();
-
-echo('<head>');
-echo('    <link href="assets/css/reset.css" rel="stylesheet" type="text/css">');
-echo('    <link href="assets/css/main.css" rel="stylesheet" type="text/css">');
-echo('</head>');
-echo('<body>');
-echo('<h1>Buscaminas</h1>');
-echo('<p>Dimension: '.$dimension.'x'.$dimension.'</p>');
-
+$minas=array();?>
+<head>
+	<title>Buscaminas - Andrés Carballo</title>
+    <link href="assets/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<h1>Buscaminas</h1>
+<p>Dimension: <?=$dimension?>x<?=$dimension?></p>
+<?php 
 require_once('assets/funtions.php');
 $campominas = init_minefield($campominas,$dimension);
 $minas= init_mines($minas,$dimension,$minas);
 $campominas = show_all_mines($campominas, $minas, $dimension);
-echo('<p>N&uacutemero Minas: '.count($minas).'</p>');
-
-echo('<div>');
+?>
+<p>Numero Minas: <?=count($minas)?></p>
+<div>
+<?php
 show_minefield($campominas,$dimension);
-echo('</div>');
+?>
+</div>
 
-echo('</body>');
-
+</body>
+<?php 
 //echo('<hr/>');
 //echo "<pre>";
 //print_r($campominas);
